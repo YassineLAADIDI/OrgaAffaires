@@ -1,0 +1,41 @@
+entite_code,entite_ville,entite_addr,entite_nature
+Branche_DMA,QC, 123 rue de rien,Principale
+Branche_DIS,Paris, 852 rue de rien,Principale
+Branche_IMM,Berlin, 963 rue de rien,Principale
+Branche_BKG,QC, 425 rue de rien,Principale
+Branche_IB,Berlin, 452 rue de rien,Principale
+Branche_CM,Paris, 951 rue de rien,Principale
+Recette,Casablanca, 452 rue de rien,Principale
+Ex_Laser,Casablanca, 355 rue de rien,Principale
+Branche_BNP_PPF,Berlin, 111 rue de rien,Principale
+BNP_Paribas_PF,QC, 444 rue de rien,Principale
+Branche_DOM,Berlin, 687 rue de rien,Principale
+Branche_Cora,Berlin, 751 rue de rien,Principale
+785,Berlin, 45 route de la voie,Secondaire
+100,Berlin, 156 route de la voie,Secondaire
+700,Paris, 11 route de la voie,Secondaire
+720,Casablanca, 53 route de la voie,Secondaire
+140,Berlin, 756 route de la voie,Secondaire
+257,QC, 22 route de la voie,Secondaire
+168,Paris, 105 route de la voie,Secondaire
+CTLI,Paris, 14 route de la voie,Secondaire
+BPIV,Casablanca, 46 route de la voie,Secondaire
+130,Paris, 42 rue de bine,Secondaire
+128,QC, 2788 route de la voie,Secondaire
+84,Berlin, 65 rue de bien,Secondaire
+_IB,QC, 785 rue de rien,Secondaire
+133,Paris, 965 route de la voie,Secondaire
+134,QC, 77 route de la voie,Secondaire
+135,Casablanca, 55 route de la voie,Secondaire
+236,Paris, 22 route de la voie,Secondaire
+736,Berlin, 33 route de la voie,Secondaire
+237,QC, 4 route de la voie,Secondaire
+238,Tikawika, 415 route de la voie,Secondaire
+239,Dango, 56 route de la voie,Secondaire
+240,Casablanca, 2 route de la voie,Secondaire
+IB,QC, 25 route de la voie,Secondaire
+Siège,Rabat, 25 bd frgaos ,Secondaire
+TEST,Casablanca, 123 rue de rien,Secondaire
+DOM_/_Domofinance,QC, 156 route de la voie,Secondaire
+Cora,Locus, 123 rue de rien,Secondaire
+Cetelem,--, 156 route de la voie,Principale

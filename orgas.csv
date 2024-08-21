@@ -2,8 +2,8 @@ entite_code,orga_left,orga_right,orga_niveau,entite_pere_code
 Cetelem,1,84,0,NULL
 Branche_DMA,2,11,1,Cetelem
 785,3,4,2,Branche_DMA
-100,5,6,2,Branche_DMA
-700,7,8,2,Branche_DMA
+100d,5,6,2,Branche_DMA
+700d,7,8,2,Branche_DMA
 720,9,10,2,Branche_DMA
 Branche_DIS,12,21,1,Cetelem
 100,13,14,2,Branche_DIS

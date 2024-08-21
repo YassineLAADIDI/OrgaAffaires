@@ -1,0 +1,43 @@
+Code,Ville,Adresse,Nature,Niveau,Parent
+Cetelem,--, 156 route de la voie,Principale,0,Aucun
+Branche_DMA,QC, 123 rue de rien,Principale,1,Cetelem
+785,Berlin, 45 route de la voie,Secondaire,2,Branche_DMA
+100d,Saturn, 56 bd la gloire ,Secondaire,2,Branche_DMA
+700d,Settat, 121 bd de la voie,Secondaire,2,Branche_DMA
+720,Casablanca, 53 route de la voie,Secondaire,2,Branche_DMA
+Branche_DIS,Paris, 852 rue de rien,Principale,1,Cetelem
+100,Berlin, 156 route de la voie,Secondaire,2,Branche_DIS
+140,Berlin, 756 route de la voie,Secondaire,2,Branche_DIS
+257,QC, 22 route de la voie,Secondaire,2,Branche_DIS
+168,Paris, 105 route de la voie,Secondaire,2,Branche_DIS
+Branche_IMM,Berlin, 963 rue de rien,Principale,1,Cetelem
+CTLI,Paris, 14 route de la voie,Secondaire,2,Branche_IMM
+BPIV,Casablanca, 46 route de la voie,Secondaire,2,Branche_IMM
+Branche_BKG,QC, 425 rue de rien,Principale,1,Cetelem
+130,Paris, 42 rue de bine,Secondaire,2,Branche_BKG
+700,Paris, 11 route de la voie,Secondaire,2,Branche_BKG
+128,QC, 2788 route de la voie,Secondaire,2,Branche_BKG
+84,Berlin, 65 rue de bien,Secondaire,2,Branche_BKG
+Branche_IB,Berlin, 452 rue de rien,Principale,1,Cetelem
+_IB,QC, 785 rue de rien,Secondaire,2,Branche_IB
+Branche_CM,Paris, 951 rue de rien,Principale,1,Cetelem
+133,Paris, 965 route de la voie,Secondaire,2,Branche_CM
+134,QC, 77 route de la voie,Secondaire,2,Branche_CM
+135,Casablanca, 55 route de la voie,Secondaire,2,Branche_CM
+236,Paris, 22 route de la voie,Secondaire,2,Branche_CM
+736,Berlin, 33 route de la voie,Secondaire,2,Branche_CM
+237,QC, 4 route de la voie,Secondaire,2,Branche_CM
+238,Tikawika, 415 route de la voie,Secondaire,2,Branche_CM
+239,Dango, 56 route de la voie,Secondaire,2,Branche_CM
+240,Casablanca, 2 route de la voie,Secondaire,2,Branche_CM
+Recette,Casablanca, 452 rue de rien,Principale,1,Cetelem
+IB,QC, 25 route de la voie,Secondaire,2,Recette
+Ex_Laser,Casablanca, 355 rue de rien,Principale,1,Cetelem
+Branche_BNP_PPF,Berlin, 111 rue de rien,Principale,1,Cetelem
+BNP_Paribas_PF,QC, 444 rue de rien,Principale,2,Branche_BNP_PPF
+Siège,Rabat, 25 bd frgaos ,Secondaire,3,BNP_Paribas_PF
+TEST,Casablanca, 123 rue de rien,Secondaire,3,BNP_Paribas_PF
+Branche_DOM,Berlin, 687 rue de rien,Principale,1,Cetelem
+DOM_/_Domofinance,QC, 156 route de la voie,Secondaire,2,Branche_DOM
+Branche_Cora,Berlin, 751 rue de rien,Principale,1,Cetelem
+Cora,Locus, 123 rue de rien,Secondaire,2,Branche_Cora

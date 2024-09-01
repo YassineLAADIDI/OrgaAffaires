@@ -2,7 +2,7 @@ import tkinter as tk
 from tkinter import ttk, messagebox
 from Modele import *
 
-# classe pour instancier la fenetre de connexion
+# Classe pour instancier la fenêtre de connexion
 class Connexion(tk.Tk):
     def __init__(self):
         super().__init__()
@@ -20,7 +20,7 @@ class Connexion(tk.Tk):
         self.login_button = tk.Button(self, text="Se connecter", command=self.checkLogin)
         self.login_button.pack(pady=10)
 
-    # valider login et pass
+    # Valider login et mot de passe
     def checkLogin(self):
         login = self.login_entry.get()
         password = self.password_entry.get()
@@ -29,7 +29,8 @@ class Connexion(tk.Tk):
             self.chargerApp()
         else:
             messagebox.showerror("Erreur", "Login ou mot de passe incorrect")
-    # fermer la fenetre de connexion, instancier le réseau et charger les 3 csv pour lancer la fenetre principale  avec la structure de l'organisation passée en paramètre
+
+    # Fermer la fenêtre de connexion, instancier le réseau et charger les 3 CSV pour lancer la fenêtre principale avec la structure de l'organisation passée en paramètre
     def chargerApp(self):
         self.destroy()
         org = ReseauOrga()
@@ -38,7 +39,7 @@ class Connexion(tk.Tk):
         org.chargerUsersCSV('users.csv')
         app = Application(org)
         app.mainloop()
-     
+
     def centrerFenetre(self, window, width, height):
         screen_width = window.winfo_screenwidth()
         screen_height = window.winfo_screenheight()
@@ -55,7 +56,8 @@ class Application(tk.Tk):
         self.geometry("800x600")
         self.ReseauOrga = ReseauOrga
         self.createWidgets()
-# Crée les widgets de l'interface, y compris le Treeview pour afficher la hiérarchie et les boutons.
+
+    # Crée les widgets de l'interface, y compris le Treeview pour afficher la hiérarchie et les boutons.
     def createWidgets(self):
         self.lbl_title = tk.Label(self, text="ReseauOrga Structure")
         self.lbl_title.pack()
@@ -75,19 +77,19 @@ class Application(tk.Tk):
         self.afficherHierarchie()
 
         btn_refresh = tk.Button(self, text="Rafraîchir", command=self.actualiser)
-        btn_refresh.pack(side=tk.LEFT, padx=5,pady=2)
+        btn_refresh.pack(side=tk.LEFT, padx=5, pady=2)
 
         # Bouton de déconnexion
         btn_sortir = tk.Button(self, text="Déconnexion", command=self.sortir)
-        btn_sortir.pack(side=tk.RIGHT, padx=5,pady=2)
-    
+        btn_sortir.pack(side=tk.RIGHT, padx=5, pady=2)
+
         # Bouton "Ajouter une entité"
         btn_ajouter = tk.Button(self, text="Ajouter une entité", command=self.ajouterEntite)
-        btn_ajouter.pack(side=tk.LEFT, padx=5,pady=2)
+        btn_ajouter.pack(side=tk.LEFT, padx=5, pady=2)
 
         # Nouveau bouton "Ajouter un utilisateur"
         btn_ajouter_user = tk.Button(self, text="Ajouter un utilisateur", command=self.ajouterUser)
-        btn_ajouter_user.pack(side=tk.LEFT, padx=5,pady=2)
+        btn_ajouter_user.pack(side=tk.LEFT, padx=5, pady=2)
 
         # Bouton pour lister les utilisateurs
         btn_list_users = tk.Button(self, text="Lister les utilisateurs", command=self.listerUtilisateurs)
@@ -103,41 +105,41 @@ class Application(tk.Tk):
             messagebox.showinfo("Succès", "Hiérarchie exportée avec succès dans 'resultat.csv'")
         except Exception as e:
             messagebox.showerror("Erreur", f"Erreur lors de l'exportation : {str(e)}")
-    
+
     def listerUtilisateurs(self):
-            # Créer une nouvelle fenêtre pour afficher la liste des utilisateurs
-            list_window = tk.Toplevel(self)
-            list_window.title("Liste des utilisateurs")
-            list_window.geometry("600x400")
+        # Créer une nouvelle fenêtre pour afficher la liste des utilisateurs
+        list_window = tk.Toplevel(self)
+        list_window.title("Liste des utilisateurs")
+        list_window.geometry("600x400")
 
-            # Créer le widget Treeview pour afficher les utilisateurs sous forme de tableau
-            tree_users = ttk.Treeview(list_window)
-            tree_users.pack(fill=tk.BOTH, expand=True)
+        # Créer le widget Treeview pour afficher les utilisateurs sous forme de tableau
+        tree_users = ttk.Treeview(list_window)
+        tree_users.pack(fill=tk.BOTH, expand=True)
 
-            # Définir les colonnes
-            tree_users['columns'] = ("Nom", "Prénom", "Email", "Entité")
+        # Définir les colonnes
+        tree_users['columns'] = ("Nom", "Prénom", "Email", "Entité")
 
-            # Configurer les colonnes
-            tree_users.column("#0", width=0, stretch=tk.NO)  # On cache la première colonne implicite
-            tree_users.column("Nom", anchor=tk.W, width=150)
-            tree_users.column("Prénom", anchor=tk.W, width=150)
-            tree_users.column("Email", anchor=tk.W, width=200)
-            tree_users.column("Entité", anchor=tk.W, width=100)
+        # Configurer les colonnes
+        tree_users.column("#0", width=0, stretch=tk.NO)  # On cache la première colonne implicite
+        tree_users.column("Nom", anchor=tk.W, width=150)
+        tree_users.column("Prénom", anchor=tk.W, width=150)
+        tree_users.column("Email", anchor=tk.W, width=200)
+        tree_users.column("Entité", anchor=tk.W, width=100)
 
-            # Définir les en-têtes de colonnes
-            tree_users.heading("#0", text="", anchor=tk.W)
-            tree_users.heading("Nom", text="Nom", anchor=tk.W)
-            tree_users.heading("Prénom", text="Prénom", anchor=tk.W)
-            tree_users.heading("Email", text="Email", anchor=tk.W)
-            tree_users.heading("Entité", text="Entité", anchor=tk.W)
+        # Définir les en-têtes de colonnes
+        tree_users.heading("#0", text="", anchor=tk.W)
+        tree_users.heading("Nom", text="Nom", anchor=tk.W)
+        tree_users.heading("Prénom", text="Prénom", anchor=tk.W)
+        tree_users.heading("Email", text="Email", anchor=tk.W)
+        tree_users.heading("Entité", text="Entité", anchor=tk.W)
 
-            # Insérer les données des utilisateurs dans le tableau
-            for user in self.ReseauOrga.users.values():
-                entite_code = user.entite.code if user.entite else "Aucune entité"
-                tree_users.insert("", "end", values=(user.nom, user.prenom, user.mail, entite_code))
+        # Insérer les données des utilisateurs dans le tableau
+        for user in self.ReseauOrga.users.values():
+            entite_code = user.getEntite().getCode() if user.getEntite() else "Aucune entité"
+            tree_users.insert("", "end", values=(user.getNom(), user.getPrenom(), user.getMail(), entite_code))
 
-            # Centrer la fenêtre sur l'écran
-            self.centrerFenetre(list_window, 600, 400)
+        # Centrer la fenêtre sur l'écran
+        self.centrerFenetre(list_window, 600, 400)
 
     def ajouterUser(self):
         self.user_window = tk.Toplevel(self)
@@ -160,7 +162,7 @@ class Application(tk.Tk):
         tk.Entry(self.user_window, textvariable=nom_var).grid(row=1, column=1)
         tk.Entry(self.user_window, textvariable=prenom_var).grid(row=2, column=1)
         tk.Entry(self.user_window, textvariable=mail_var).grid(row=3, column=1)
-        
+
         entite_dropdown = ttk.Combobox(self.user_window, textvariable=entite_var, values=list(self.ReseauOrga.entites.keys()))
         entite_dropdown.grid(row=4, column=1)
 
@@ -185,8 +187,7 @@ class Application(tk.Tk):
 
         tk.Button(self.user_window, text="Ajouter", command=sauvegarderUser).grid(row=5, column=1)
         self.centrerFenetre(self.user_window, 400, 300)
-        
-    
+
     def ajouterEntite(self):
         self.ajout_window = tk.Toplevel(self)
         self.ajout_window.title("Ajouter une nouvelle entité")
@@ -222,7 +223,7 @@ class Application(tk.Tk):
                 parent_orga = self.ReseauOrga.orgas.get(parent_code)
                 niveau = parent_orga.niveau + 1 if parent_orga else 0
                 orga = Orga(left=0, right=0, niveau=niveau, entite=entite, parent=parent_orga)
-                
+
                 if parent_orga:
                     parent_orga.ajouterEnfant(orga)
                 self.ReseauOrga.entites[code] = entite
@@ -245,9 +246,9 @@ class Application(tk.Tk):
                 self.insererElement("", orga)
 
     def insererElement(self, parent, orga):
-        node_id = self.tree.insert(parent, "end", text=orga.entite.code,
-                                   values=(orga.entite.ville, orga.niveau))
-        self.tree.item(node_id, tags=(orga.entite.code,))
+        node_id = self.tree.insert(parent, "end", text=orga.entite.getCode(),
+                                   values=(orga.entite.getVille(), orga.niveau))
+        self.tree.item(node_id, tags=(orga.entite.getCode(),))
         for child in orga.enfants:
             self.insererElement(node_id, child)
 
@@ -264,10 +265,10 @@ class Application(tk.Tk):
     def afficherDetails(self):
         selected_item = self.tree.selection()[0]
         orga = self.getOrgaByElement(selected_item)
-        details = f"Code: {orga.entite.code}\nVille: {orga.entite.ville}\nAdresse: {orga.entite.addr}\nNature: {orga.entite.nature}"
-        user = self.getUserByEntite(orga.entite.code)
+        details = f"Code: {orga.entite.getCode()}\nVille: {orga.entite.getVille()}\nAdresse: {orga.entite.getAddr()}\nNature: {orga.entite.getNature()}"
+        user = self.getUserByEntite(orga.entite.getCode())
         if user:
-            details += f"\n\nResponsable: {user.nom} {user.prenom}\nEmail: {user.mail}"
+            details += f"\n\nResponsable: {user.getNom()} {user.getPrenom()}\nEmail: {user.getMail()}"
 
         detail_window = tk.Toplevel(self)
         detail_window.title("Détails de l'entité")
@@ -288,10 +289,10 @@ class Application(tk.Tk):
         tk.Label(self.mod_window, text="Adresse").grid(row=2, column=0)
         tk.Label(self.mod_window, text="Nature").grid(row=3, column=0)
 
-        code_var = tk.StringVar(value=orga.entite.code)
-        ville_var = tk.StringVar(value=orga.entite.ville)
-        addr_var = tk.StringVar(value=orga.entite.addr)
-        nature_var = tk.StringVar(value=orga.entite.nature)
+        code_var = tk.StringVar(value=orga.entite.getCode())
+        ville_var = tk.StringVar(value=orga.entite.getVille())
+        addr_var = tk.StringVar(value=orga.entite.getAddr())
+        nature_var = tk.StringVar(value=orga.entite.getNature())
 
         tk.Entry(self.mod_window, textvariable=code_var).grid(row=0, column=1)
         tk.Entry(self.mod_window, textvariable=ville_var).grid(row=1, column=1)
@@ -299,14 +300,14 @@ class Application(tk.Tk):
         tk.Entry(self.mod_window, textvariable=nature_var).grid(row=3, column=1)
 
         def sauvegarderModifs():
-            old_code = orga.entite.code
-            orga.entite.code = code_var.get()
-            orga.entite.ville = ville_var.get()
-            orga.entite.addr = addr_var.get()
-            orga.entite.nature = nature_var.get()
+            old_code = orga.entite.getCode()
+            orga.entite.setCode(code_var.get())
+            orga.entite.setVille(ville_var.get())
+            orga.entite.setAddr(addr_var.get())
+            orga.entite.setNature(nature_var.get())
 
-            if old_code != orga.entite.code:
-                self.ReseauOrga.orgas[orga.entite.code] = self.ReseauOrga.orgas.pop(old_code)
+            if old_code != orga.entite.getCode():
+                self.ReseauOrga.orgas[orga.entite.getCode()] = self.ReseauOrga.orgas.pop(old_code)
 
             self.actualiser()
             self.mod_window.destroy()
@@ -320,7 +321,7 @@ class Application(tk.Tk):
         if orga.parent:
             orga.parent.enfants.remove(orga)
         else:
-            del self.ReseauOrga.orgas[orga.entite.code]
+            del self.ReseauOrga.orgas[orga.entite.getCode()]
         self.actualiser()
 
     def getOrgaByElement(self, item):
@@ -329,7 +330,7 @@ class Application(tk.Tk):
 
     def getUserByEntite(self, entite_code):
         for user in self.ReseauOrga.users.values():
-            if user.entite.code == entite_code:
+            if user.getEntite().getCode() == entite_code:
                 return user
         return None
 

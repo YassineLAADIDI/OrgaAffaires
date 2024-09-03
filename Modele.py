@@ -39,7 +39,7 @@ class Entite:
 class User:
     def __init__(self, code, entite, nom, prenom, mail):
         self.__code = code
-        self.__entite = entite
+        self.__entite = entite 
         self.__nom = nom
         self.__prenom = prenom
         self.__mail = mail
@@ -87,7 +87,7 @@ class Orga:
         self.parent = parent
         self.enfants = []
 
-    # Ajouter un enfant 
+    # Ajouter un enfant
     def ajouterEnfant(self, child):
         self.enfants.append(child)
 

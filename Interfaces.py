@@ -1,14 +1,15 @@
 import tkinter as tk
 from tkinter import ttk, messagebox
 from Modele import *
+import bcrypt
+import mysql.connector
 
-# Classe pour instancier la fenêtre de connexion
+
 class Connexion(tk.Tk):
     def __init__(self):
         super().__init__()
         self.title("Connexion")
-        self.geometry("300x150")
-
+        self.geometry("300x200")
         tk.Label(self, text="Login:").pack(pady=5)
         self.login_entry = tk.Entry(self)
         self.login_entry.pack()
@@ -17,28 +18,51 @@ class Connexion(tk.Tk):
         self.password_entry = tk.Entry(self, show='*')
         self.password_entry.pack()
 
-        self.login_button = tk.Button(self, text="Se connecter", command=self.checkLogin)
+        self.login_button = tk.Button(self, text="Se connecter", command=self.check_login)
         self.login_button.pack(pady=10)
 
+        self.mot_de_passe_oublie = tk.Label(self, text="Mot de passe oublié ?", fg="blue", cursor="hand2")
+        self.mot_de_passe_oublie.bind("<Button-1>", lambda e: messagebox.showinfo("Mot de passe oublié", "Pour réinitialiser votre mot de passe, contactez l'administrateur à : admin@cegepcfoy.ca"))
+        self.mot_de_passe_oublie.pack(pady=10)
+
     # Valider login et mot de passe
-    def checkLogin(self):
-        login = self.login_entry.get()
-        password = self.password_entry.get()
+    def check_login(self):
+            login = self.login_entry.get()
+            password = self.password_entry.get()
+            try:
+                conn = mysql.connector.connect(
+                    host="localhost",
+                    user="app",            
+                    password="app",    
+                    database="app"         
+                )
+                cursor = conn.cursor()
+                cursor.execute("SELECT password FROM users WHERE login = %s", (login,))
+                result = cursor.fetchone()
+                cursor.close()
+                conn.close()
 
-        if login == "aa" and password == "aa":
-            self.chargerApp()
-        else:
-            messagebox.showerror("Erreur", "Login ou mot de passe incorrect")
+                if result and bcrypt.checkpw(password.encode(), result[0].encode()):
+                    self.charger_app()
+                else:
+                    messagebox.showerror("Erreur", "Login ou mot de passe incorrect")
 
-    # Fermer la fenêtre de connexion, instancier le réseau et charger les 3 CSV pour lancer la fenêtre principale avec la structure de l'organisation passée en paramètre
-    def chargerApp(self):
-        self.destroy()
-        org = ReseauOrga()
-        org.chargerEntitesCSV('entites.csv')
-        org.chargerOrgaCSV('orgas.csv')
-        org.chargerUsersCSV('users.csv')
-        app = Application(org)
-        app.mainloop()
+            except mysql.connector.Error as err:
+                messagebox.showerror("Erreur de connexion", f"Impossible de se connecter à la base de données : {err}")
+
+
+    # Fermer la fenêtre de connexion, instancier le réseau et charger les fichiers CSV
+    def charger_app(self):
+        try:
+            self.destroy()
+            org = ReseauOrga()
+            org.chargerEntitesCSV('entites.csv')
+            org.chargerOrgaCSV('orgas.csv')
+            org.chargerUsersCSV('users.csv')
+            app = Application(org)
+            app.mainloop()
+        except Exception as e:
+            messagebox.showerror("Erreur", f"Erreur lors du chargement de l'application : {str(e)}")
 
     def centrerFenetre(self, window, width, height):
         screen_width = window.winfo_screenwidth()

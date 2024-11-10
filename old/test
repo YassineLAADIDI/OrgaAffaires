@@ -1,7 +1,0 @@
- 
-from View import LoginWindowView
-
-    
- 
-login_window = LoginWindowView()
- 

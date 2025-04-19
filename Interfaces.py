@@ -34,7 +34,8 @@ class Connexion(tk.Tk):
                     host="localhost",
                     user="app",            
                     password="app",    
-                    database="app"         
+                    database="app" ,
+                    port = 3309        
                 )
                 cursor = conn.cursor()
                 cursor.execute("SELECT password FROM users WHERE login = %s", (login,))
